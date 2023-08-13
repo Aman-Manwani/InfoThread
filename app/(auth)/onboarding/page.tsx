@@ -1,7 +1,7 @@
 
 const Page = () => {
   return (
-    <div>OnBoarding</div>
+    <div className="text-light-1">OnBoarding</div>
   )
 }
 
