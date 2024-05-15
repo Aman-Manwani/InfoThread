@@ -28,6 +28,6 @@ export async function updateUser(
             revalidatePath(path);
         }
     } catch(error:any){
-        console.log('Error updating user', error.message);
+        console.log('Error updating user');
     }
 } 
