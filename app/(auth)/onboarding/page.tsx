@@ -7,8 +7,8 @@ const Page = async () => {
   const userData = {
     id: user?.id,
     objectId: userInfo?._id,
-    usename: userInfo?.username || user?.username,
-    name: userInfo?.name || userInfo?.firstname || "",
+    username: userInfo?.username || user?.username,
+    name: userInfo ? userInfo?.name : user.firstName ?? "",
     bio: userInfo?.bio || "",
     image: userInfo?.image || user?.imageUrl,
   };
