@@ -17,7 +17,6 @@ const Bottombar = () => {
           const isActive =
             (pathname.includes(link.route) && link.route.length > 1) ||
             pathname === link.route;
-          console.log(link.label.split(/\s+/));
           return (
             <Link
               href={link.route}

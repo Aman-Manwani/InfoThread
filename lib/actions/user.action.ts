@@ -29,7 +29,7 @@ export async function updateUser({
             bio: bio,
             image: image,
             username: username.toLowerCase(),
-            onboarded: false,
+            onboarded: true,
         }
 
         await User.findOneAndUpdate(

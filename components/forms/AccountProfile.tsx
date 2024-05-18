@@ -131,15 +131,17 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               />
               )}
             </FormLabel>
-            <FormControl className='flex-1 text-base-semibold text-gray-200'>
-              <Input 
-                type="file"
-                accept="image/*"
-                placeholder="Upload a Photo Photo"
-                className="account-form_image-input"
-                onChange={(e) => handleImageChange(e, field.onChange)}
-              />
-            </FormControl>
+            <FormMessage>
+              <FormControl className='flex-1 text-base-semibold text-gray-200'>
+                <Input 
+                  type="file"
+                  accept="image/*"
+                  placeholder="Upload a Photo Photo"
+                  className="account-form_image-input"
+                  onChange={(e) => handleImageChange(e, field.onChange)}
+                  />
+              </FormControl>
+            </FormMessage>
           </FormItem>
         )}
       />
@@ -151,13 +153,15 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             <FormLabel className="text-base-semibold text-light-2">
               Name
             </FormLabel>
-            <FormControl>
-              <Input 
-                type="text"
-                className="account-form_input no-focus"
-                {...field}
-              />
-            </FormControl>
+            <FormMessage>
+              <FormControl>
+                <Input 
+                  type="text"
+                  className="account-form_input no-focus"
+                  {...field}
+                  />
+              </FormControl>
+            </FormMessage>
           </FormItem>
         )}
       />
@@ -169,13 +173,15 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             <FormLabel className="text-base-semibold text-light-2">
               Username
             </FormLabel>
-            <FormControl>
-              <Input 
-                type="text"
-                className="account-form_input no-focus"
-                {...field}
-              />
-            </FormControl>
+            <FormMessage>
+              <FormControl>
+                <Input 
+                  type="text"
+                  className="account-form_input no-focus"
+                  {...field}
+                  />
+              </FormControl>
+            </FormMessage>
           </FormItem>
         )}
       />
@@ -187,13 +193,15 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             <FormLabel className="text-base-semibold text-light-2">
               Bio
             </FormLabel>
-            <FormControl>
-              <Textarea 
-                rows={10}
-                className="account-form_input no-focus"
-                {...field}
-              />
-            </FormControl>
+            <FormMessage>
+              <FormControl>
+                <Textarea 
+                  rows={10}
+                  className="account-form_input no-focus"
+                  {...field}
+                  />
+              </FormControl>
+            </FormMessage>
           </FormItem>
         )}
       />
