@@ -1,4 +1,4 @@
-import React from 'react'
+"use server"
 import { connectToDB } from '../mongoose'
 import User from '../models/user.model';
 import { revalidatePath } from 'next/cache';
@@ -21,13 +21,23 @@ export async function updateUser(
             bio,
             image,
             onboarded: true,
-        },{upesert:true}
+        },{upsert:true}
         );
 
         if(path === '/profile/edit'){
             revalidatePath(path);
         }
     } catch(error:any){
-        console.log('Error updating user');
+        console.log('Error updating user', error.message);
     }
 } 
+
+export async function fetchUser(userId:String){
+    try{
+        connectToDB();
+        const user = await User.findOne({id: userId});
+        return user;
+    } catch(error:any){
+        throw new Error('Error fetching user', error.message);
+    }
+}
