@@ -1,12 +1,15 @@
 import mongoose from 'mongoose'
-import { unique } from 'next/dist/build/utils';
 
 const userSchema = new mongoose.Schema({
     id: {type: String, required: true},
     username: {type: String, unique: true, required: true},
     name: {type: String, required: true},
-    image: String,
-    bio: String,
+    image: {type: String},
+    bio: {type: String},
+    onboarded: {
+        type: Boolean,
+        default: false,
+    },
     threads: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Thread'

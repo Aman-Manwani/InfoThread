@@ -3,25 +3,39 @@ import { connectToDB } from '../mongoose'
 import User from '../models/user.model';
 import { revalidatePath } from 'next/cache';
 
-export async function updateUser(
-    userId:String,
-    username:String,
-    name:String,
-    bio:String,
-    image:String,
-    path: string,
-) : Promise<void>{
+interface Params {
+    userId: string;
+    username: string;
+    name: string;
+    bio: string;
+    image: string;
+    path: string;
+  }
+
+export async function updateUser({
+    userId,
+    bio,
+    name,
+    path,
+    username,
+    image,
+  }: Params): Promise<void> {
     try{
 
         connectToDB();
         
-        await User.findOneAndUpdate({id: userId}, {
+        const updatedUser = {
+            name: name,
+            bio: bio,
+            image: image,
             username: username.toLowerCase(),
-            name,
-            bio,
-            image,
-            onboarded: true,
-        },{upsert:true}
+            onboarded: false,
+        }
+
+        await User.findOneAndUpdate(
+            { id: userId },
+            updatedUser,
+            { upsert: true }
         );
 
         if(path === '/profile/edit'){

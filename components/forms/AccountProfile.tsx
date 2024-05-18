@@ -86,14 +86,14 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       }
     }
 
-    await updateUser(
-      user.id, 
-      values.username, 
-      values.name, 
-      values.bio, 
-      values.profile_photo, 
-      '/profile/edit'
-    );
+    await updateUser({
+      name: values.name,
+      path: pathname,
+      username: values.username,
+      userId: user.id,
+      bio: values.bio,
+      image: values.profile_photo,
+    });
 
     if(pathname === '/profile/edit') {
       router.back();
@@ -155,7 +155,6 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               <Input 
                 type="text"
                 className="account-form_input no-focus"
-                onChange={(e) => handleImageChange(e, field.onChange)}
                 {...field}
               />
             </FormControl>
@@ -174,7 +173,6 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               <Input 
                 type="text"
                 className="account-form_input no-focus"
-                onChange={(e) => handleImageChange(e, field.onChange)}
                 {...field}
               />
             </FormControl>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use } from 'react'
 import { currentUser } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
 import { fetchUser } from '@/lib/actions/user.action';
@@ -12,7 +12,7 @@ const page = async() => {
     }
 
     const userInfo = await fetchUser(user.id);
-
+    console.log(userInfo);
     if(!userInfo?.onboarded){
         redirect('/onboarding');
     }
