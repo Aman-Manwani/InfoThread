@@ -1,8 +1,14 @@
+import { fetchThreads } from "@/lib/actions/thread.action";
 
-export default function Home() {
+const  Home = async() => {
+
+  const posts = await fetchThreads();
+
   return (
     <div>
       <h1 className="head-text text-left">Home</h1>
     </div>
   )
 }
+
+export default Home;
