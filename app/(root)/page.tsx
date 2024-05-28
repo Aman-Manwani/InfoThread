@@ -1,13 +1,37 @@
-import { fetchThreads } from "@/lib/actions/thread.action";
+import ThreadCard from "@/components/cards/ThreadCard";
+import { fetchPosts } from "@/lib/actions/thread.action";
+import { currentUser } from "@clerk/nextjs";
 
-const  Home = async() => {
+const Home = async() => {
 
-  const posts = await fetchThreads();
+  const result = await fetchPosts(1,20);
+  console.log(result);
+  const user = currentUser();
 
   return (
-    <div>
+    <>
       <h1 className="head-text text-left">Home</h1>
-    </div>
+
+      <section>
+        {result.posts.length === 0 ? (
+          <p className="no-result">No posts found</p>
+          ) : (
+          result.posts.map((post) => (
+            <ThreadCard
+              key = {post._id} 
+              id = {post._id}
+              currentUserId = {user?.id}
+              parentId = {post.parentId}
+              content = {post.text}
+              author = {post.author}
+              community = {post.community}
+              createdAt = {post.createdAt} 
+              comments = {post.children}
+            />
+          )))
+        }
+      </section>
+    </>
   )
 }
 
